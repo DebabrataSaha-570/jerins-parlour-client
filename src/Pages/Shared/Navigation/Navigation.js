@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -78,13 +79,27 @@ const Navigation = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
+                            {/* {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
-                            ))}
+                            ))} */}
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">Home</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">About us</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">Contact</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">Admin</Typography>
+                            </MenuItem>
                         </Menu>
+
                     </Box>
+
                     <Typography
                         variant="h6"
                         noWrap
@@ -93,6 +108,7 @@ const Navigation = () => {
                     >
                         LOGO
                     </Typography>
+                    {/* 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
@@ -103,6 +119,31 @@ const Navigation = () => {
                                 {page}
                             </Button>
                         ))}
+                        
+                    </Box> */}
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to="/home">
+
+                            <MenuItem >
+                                <Typography textAlign="center">Home</Typography>
+                            </MenuItem>
+                        </Link>
+
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to="/login">
+
+                            <MenuItem >
+                                <Typography textAlign="center">Login</Typography>
+                            </MenuItem>
+                        </Link>
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to="/register">
+
+                            <MenuItem >
+                                <Typography textAlign="center">Register</Typography>
+                            </MenuItem>
+                        </Link>
+
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
