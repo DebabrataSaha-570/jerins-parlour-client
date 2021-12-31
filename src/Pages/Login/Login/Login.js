@@ -1,9 +1,11 @@
 import { Box, Button, Typography, Container, TextField } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 import Navigation from '../../Shared/Navigation/Navigation';
 
 const Login = () => {
+    const { user, signInWithGoogle } = useAuth()
     return (
         <>
             <Navigation></Navigation>
@@ -34,7 +36,8 @@ const Login = () => {
                 </Box>
 
                 <Box sx={{ width: '35%', mx: 'auto', mb: 5 }}>
-                    <Button sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%', border: 1, borderColor: 'grey.500', borderRadius: '30px' }} style={{ color: 'black', textTransform: 'capitalize' }}>
+
+                    <Button onClick={signInWithGoogle} sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%', border: 1, borderColor: 'grey.500', borderRadius: '30px' }} style={{ color: 'black', textTransform: 'capitalize' }}>
                         <img style={{ marginRight: '110px' }} width="35px" src="https://img.icons8.com/color/48/000000/google-logo.png" />
 
                         <Typography variant="subtitle1">Continue With Google</Typography>

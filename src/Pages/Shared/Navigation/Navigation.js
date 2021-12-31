@@ -12,11 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navigation = () => {
+    const { user, logout } = useAuth()
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -130,12 +132,21 @@ const Navigation = () => {
                             </MenuItem>
                         </Link>
 
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to="/login">
+                        {user.email ?
 
-                            <MenuItem >
-                                <Typography textAlign="center">Login</Typography>
+                            <MenuItem onClick={logout}>
+                                <Typography textAlign="center">Logout</Typography>
                             </MenuItem>
-                        </Link>
+
+                            :
+                            <Link style={{ textDecoration: 'none', color: 'white' }} to="/login">
+
+                                <MenuItem >
+                                    <Typography textAlign="center">Login</Typography>
+                                </MenuItem>
+                            </Link>
+                        }
+
                         <Link style={{ textDecoration: 'none', color: 'white' }} to="/register">
 
                             <MenuItem >
